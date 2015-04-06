@@ -1,0 +1,76 @@
+<form action="{path-gis_reg_process}" method="POST" class="regform" id="expa_reg_form" accept-charset="UTF-8">
+<table class="sighnup-form-table">
+    <tr>
+    <td class="input-name">{name} <span class="required">*</span></td>
+    <td><input id="first_name" class="input" type="text" maxlength="50" name="first_name" 
+      required 
+      oninvalid="this.setCustomValidity('Your name')" 
+      oninput="setCustomValidity('')">
+    </td>
+  </tr>
+  <tr>
+    <td class="input-name">{surname} <span class="required">*</span></td>
+    <td><input id="last_name" class="input" type="text" name="last_name" maxlength="50"
+      required 
+      oninvalid="this.setCustomValidity('Your surname')" 
+      oninput="setCustomValidity('')"> 
+    </td>
+  </tr>
+  <tr>
+    <td class="input-name">{e-mail} <span class="required">*</span></td>
+    <td> <input id="email" class="input" type="text" name="email" maxlength="50"
+      required 
+      oninvalid="this.setCustomValidity('Please input valid e-mail')" 
+      oninput="setCustomValidity('')" 
+      pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$">
+    </td>
+  </tr>
+  <tr>
+    <td class="input-name">{password}<span class="required">*</span></td> 
+    <td><input id="password" class="input" type="password" name="password" 
+      required 
+      oninvalid="this.setCustomValidity('Your password needs to be at least 8 characters long')" 
+      oninput="setCustomValidity('')"
+      pattern=".{8,}"> 
+    </td>
+  </tr>
+  <tr>
+    <td class="input-name">{lead-name} <span class="required">*</span></td>
+    <td> 
+      <select id="university" name="university" title="{lead-name}">
+          {leads-option-list}
+
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="input-name">{lc} </td> 
+    <td><input class="readonly" id="localcommittee" name="localcommittee" title="{lc}" type="text" readonly />
+    </td>
+  </tr>
+  <tr>
+            <input type="hidden" name="website_url" value="{website_url}">
+      </table>
+    <div id="error" class="error"><p></p></div>
+    <div id="submit">
+        <input type="submit" id="submit_button" name="submit" clicked="false" class="send" value="register">
+    </div>
+</form>
+
+<script type='text/javascript' src='{path-gis_lcMapper}'></script>
+<script type='text/javascript'>
+//var $j = jQuery.noConflict();
+jQuery(document).ready(function($){
+    var myJsonString = getLeads('{path-leads-json}');
+    //jQuery(".regform").validationEngine();
+    jQuery('#university').change(function($) {
+    //    $('#localcommittee').val((mapLC($('#university').val())));
+        jQuery('#localcommittee').val(mapLC(jQuery('#university').val()));
+    });
+    
+    jQuery('#submit_button').click(function($){
+        jQuery('#submit_button').attr('clicked', 'true');
+
+    });
+});
+</script>
