@@ -8,7 +8,7 @@ License: GPL
 */
 
 To adpot EXPA Wordpress plugin for your website you need to do following:
-1) Go to config.php file and edit basig labels for the form and thank you message
+1) Go to config.php file and edit basic labels for the form, thank you message and data about your entity from EXPA
 2) Go to leads.json file and put there all your leads assigned to LCs that you have on EXPA. LC name MUST be the same as on EXPA!
 3) Go to lc_id.json file and set all LCs in your entity with valid EXPA id
 

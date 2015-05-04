@@ -82,6 +82,8 @@ $user_lc = $lc_gis_map[htmlspecialchars($_POST['localcommittee'])];
 
 // structure data for GIS
 // form structure taken from actual form submission at auth.aiesec.org/user/sign_in
+
+$configs = include('config.php');
 $fields = array(
 	'utf8' => '&#x2713;',
 	'authenticity_token' => htmlspecialchars($gis_token),
@@ -89,8 +91,8 @@ $fields = array(
 	'user[first_name]' => htmlspecialchars($_POST['first_name']),
 	'user[last_name]' => htmlspecialchars($_POST['last_name']),
 	'user[password]' => htmlspecialchars($_POST['password']),
-	'user[country]' => 'POLAND', // EXAMPLE: 'GERMANY' 
-	'user[mc]' => '1626', // EXAMPLE: 1596
+    'user[country]' => $configs["country_name"], //'POLAND', // EXAMPLE: 'GERMANY' 
+    'user[mc]' => $configs["mc_id"], //'1626', // EXAMPLE: 1596
 	'user[lc_input]' => $user_lc,
 	'user[lc]' => $user_lc,
 	'commit' => 'REGISTER'
